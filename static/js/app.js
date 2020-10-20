@@ -7,7 +7,6 @@ var cityField = d3.select("#city");
 var stateField = d3.select("#state");
 var countryField = d3.select("#country");
 var shapeField = d3.select("#shape");
-// YOUR CODE HERE!
 // datetime = data.map(date => date.datetime)
 // city = data.map(date => date.city)
 // state = data.map(date => date.state)
@@ -15,22 +14,24 @@ var shapeField = d3.select("#shape");
 // shape = data.map(date => date.shape)
 // durationMinutes = data.map(date => date.durationMinutes)
 // comments = data.map(date => date.comments)
-function showMe () {
+// function showMe () {
 
-   var chboxs = d3.selectAll("#c1");
-   chboxs.each( box =>{
-        vis = (box.checked) ? "block" : "none";
-        d3.select(box).style.display = vis;
-        console.log(box)
-   })
-   }
+//    var chboxs = d3.selectAll("#c1");
+//    chboxs.each( box =>{
+//         vis = (box.checked) ? "block" : "none";
+//         d3.select(box).style.display = vis;
+//         console.log(box)
+//    })
+//    }
 function filterDates(){
     // d3.event.preventDefault();
-    tableData = tableData.filter(tableD => tableD.datetime === datetimeField.property('value') && d3.select('#dateCheck'))
-    tableData = tableData.filter(tableD => tableD.datetime === cityField.property('value') && d3.select('#cityCheck'))
-    tableData = tableData.filter(tableD => tableD.datetime === stateField.property('value') && d3.select('#stateCheck'))
-    tableData = tableData.filter(tableD => tableD.datetime === countryField.property('value') && d3.select('#countryCheck'))
-    tableData = tableData.filter(tableD => tableD.datetime === shapeField.property('value') && d3.select('#shapeCheck'))
+   console.log(datetimeField.property('value'))
+    tableData = tableData.filter(tableD => tableD.datetime === datetimeField.property('value') && d3.select('#dateCheck').checked)
+    tableData = tableData.filter(tableD => tableD.city === cityField.property('value') && d3.select('#cityCheck').checked)
+    tableData = tableData.filter(tableD => tableD.state === stateField.property('value') && d3.select('#stateCheck').checked)
+    tableData = tableData.filter(tableD => tableD.country === countryField.property('value') && d3.select('#countryCheck').checked)
+    tableData = tableData.filter(tableD => tableD.shape === shapeField.property('value') && d3.select('#shapeCheck').checked)
+    console.log(datetimeField.property('value'))
     d3.select('#ufo-table').select('tbody').selectAll('tr')
     .data(tableData)
     .enter() // creates placeholder for new data
@@ -59,10 +60,10 @@ d3.select('#ufo-table').select('tbody').selectAll('tr')
         <td>${d.durationMinutes}</td>
         <td>${d.comments}</td>`);
 
-button.on("click", filterDates());
-cityField.on("submit",filterDates());
-stateField.on("submit",filterDates());
-countryField.on("submit",filterDates());
-shapeField.on("submit",filterDates());
-datetimeField.on("submit",filterDates());
-d3.selectAll("c1").on('click',showMe())
+button.on("click", filterDates);
+cityField.on("submit",filterDates);
+stateField.on("submit",filterDates);
+countryField.on("submit",filterDates);
+shapeField.on("submit",filterDates);
+datetimeField.on("submit",filterDates);
+// d3.selectAll("c1").on('click',showMe())
