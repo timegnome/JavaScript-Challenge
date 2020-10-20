@@ -2,7 +2,11 @@
 var tableData = data;
 
 var button = d3.select("#filter-btn");
-var inputField = d3.select("#datetime");
+var cityField = d3.select("#city");
+var stateField = d3.select("#state");
+var countryField = d3.select("#country");
+var shapeField = d3.select("#shape");
+var datetimeField = d3.select("#datetime");
 // YOUR CODE HERE!
 // datetime = data.map(date => date.datetime)
 // city = data.map(date => date.city)
@@ -46,8 +50,13 @@ d3.select('#ufo-table').select('tbody').selectAll('tr')
         <td>${d.city}</td>
         <td>${d.state}</td>
         <td>${d.country}</td>
+        <td>${d.shape}</td>
         <td>${d.durationMinutes}</td>
         <td>${d.comments}</td>`);
 
 button.on("click", filterDates());
-inputField.on("submit",filterDates());
+cityField.on("submit",filterDates());
+stateField.on("submit",filterDates());
+countryField.on("submit",filterDates());
+shapeField.on("submit",filterDates());
+datetimeField.on("submit",filterDates());
