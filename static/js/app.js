@@ -11,19 +11,14 @@ var inputField = d3.select("#datetime");
 // shape = data.map(date => date.shape)
 // durationMinutes = data.map(date => date.durationMinutes)
 // comments = data.map(date => date.comments)
-function showMe (box) {
+function showMe () {
 
-   var chboxs = document.getElementsByName("c1");
-   var vis = "none";
-   for(var i=0;i<chboxs.length;i++) { 
-        vis = (chboxs.checked) ? "block" : "none";
-           break;
-       }
+   var chboxs = d3.selectAll("c1");
+   chboxs.forEach( box =>{
+        vis = (box.checked) ? "block" : "none";
+        document.getElementById(box).style.display = vis;
+   })
    }
-   document.getElementById(box).style.display = vis;
-
-
-}
 function filterDates(){
     // d3.event.preventDefault();
     var inputField = d3.select("#datetime");
@@ -37,6 +32,7 @@ function filterDates(){
           <td>${d.city}</td>
           <td>${d.state}</td>
           <td>${d.country}</td>
+          <td>${d.shape}</td>
           <td>${d.durationMinutes}</td>
           <td>${d.comments}</td>`);
 }
