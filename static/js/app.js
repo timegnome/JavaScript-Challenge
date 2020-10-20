@@ -31,12 +31,14 @@ function filterDates(){
    // for (var a = 0; a < n.length; a++){
    //    filters = n[a].checked;
    // }
-    tableData = tableData.filter(tableD => tableD.datetime === datetimeField.property('value') && d3.select('#dateCheck').node().checked);
-    tableData = tableData.filter(tableD => tableD.city === cityField.property('value') && d3.select('#cityCheck').node().checked);
-    tableData = tableData.filter(tableD => tableD.state === stateField.property('value') && d3.select('#stateCheck').node().checked);
-    tableData = tableData.filter(tableD => tableD.country === countryField.property('value') && d3.select('#countryCheck').node().checked);
-    tableData = tableData.filter(tableD => tableD.shape === shapeField.property('value') && d3.select('#shapeCheck').node().checked);
-    console.log(d3.select('#dateCheck').checked);
+   tableData = data;
+
+    tableData = (d3.select('#dateCheck').node().checked) ? tableData.filter(tableD => tableD.datetime === datetimeField.property('value')) : tableData;
+    tableData = (d3.select('#cityCheck').node().checked) ? tableData.filter(tableD => tableD.city === cityField.property('value')) : tableData;
+    tableData = (d3.select('#stateCheck').node().checked) ? tableData.filter(tableD => tableD.state === stateField.property('value')) : tableData;
+    tableData = (d3.select('#countryCheck').node().checked) ? tableData.filter(tableD => tableD.country === countryField.property('value')) : tableData
+    tableData = (d3.select('#shapeCheck').node().checked) ? tableData.filter(tableD => tableD.shape === shapeField.property('value')) : tableData;
+    console.log(tableData);
     d3.select('#ufo-table').select('tbody').selectAll('tr')
     .data(tableData)
     .enter() // creates placeholder for new data
