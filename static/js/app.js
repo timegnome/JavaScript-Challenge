@@ -38,8 +38,10 @@ function filterDates(){
     tableData = (d3.select('#stateCheck').node().checked) ? tableData.filter(tableD => tableD.state === stateField.property('value')) : tableData;
     tableData = (d3.select('#countryCheck').node().checked) ? tableData.filter(tableD => tableD.country === countryField.property('value')) : tableData
     tableData = (d3.select('#shapeCheck').node().checked) ? tableData.filter(tableD => tableD.shape === shapeField.property('value')) : tableData;
-    console.log(tableData);
-    d3.select('#ufo-table').select('tbody').selectAll('tr')
+    ufo_tabled = d3.select('#ufo-table').select('tbody')
+    ufo_tabled.html('')
+    console.log('after');
+    ufo_tabled.selectAll('tr')
     .data(tableData)
     .enter() // creates placeholder for new data
     .append("tr") // appends a div to placeholder
